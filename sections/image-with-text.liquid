@@ -12,6 +12,7 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
 {%- endstyle -%}
 
 {% assign scheme1 = settings.color_schemes | first %}
@@ -49,7 +50,7 @@
         {%- endif -%}
       </div>
     </div>
-    <div class="image-with-text__text-item grid__item">
+    <div class="image-with-text__text-item grid__item {% if section.settings.background %}bg-full{% endif %}">
       <div
         id="ImageWithText--{{ section.id }}"
         class="image-with-text__content image-with-text__content--{{ section.settings.desktop_content_position }} image-with-text__content--desktop-{{ section.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ section.settings.mobile_content_alignment }} image-with-text__content--{{ section.settings.height }} gradient color-{{ section.settings.color_scheme }} content-container"
@@ -82,7 +83,7 @@
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %} {% if section.settings.background %}btn-transparent{% endif %}"
                   {{ block.shopify_attributes }}
                 >
                   {{ block.settings.button_label | escape }}
@@ -225,6 +226,12 @@
       ],
       "default": "no-overlap",
       "label": "t:sections.image-with-text.settings.content_layout.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "background",
+      "default": false,
+      "label": "t:sections.image-with-text.settings.background.label"
     },
     {
       "type": "color_scheme",

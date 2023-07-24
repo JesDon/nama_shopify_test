@@ -66,6 +66,20 @@
                       {%- endif -%}
                     </li>
                   {%- endfor -%}
+                  {%- if section.settings.collection != blank -%}
+                    <li class="collection-megamenu">
+                        <div class="collage__item collage__item--collection scroll-trigger animate--slide-in">
+                          {% render 'card-collection',
+                            card_collection: section.settings.collection,
+                            media_aspect_ratio: 'adapt',
+                            columns: 2,
+                            extend_height: true,
+                            wrapper_class: section.settings.card_styles,
+                            placeholder_image: placeholder_image
+                          %}
+                        </div>
+                      </li>
+                  {%- endif -%}
                 </ul>
               </div>
             </details>

@@ -127,6 +127,29 @@
                       {%- if settings.brand_description != blank -%}
                         <div class="rte">{{ settings.brand_description }}</div>
                       {%- endif -%}
+                      {%- if block.settings.show_logo -%}
+                        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+                          {%- if settings.logo != blank -%}
+                            <div class="header__heading-logo-wrapper">
+                              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+                              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                              {{ settings.logo | image_url: width: 600 | image_tag:
+                                class: 'header__heading-logo motion-reduce',
+                                widths: widths,
+                                height: logo_height,
+                                width: settings.logo_width,
+                                alt: logo_alt,
+                                sizes: sizes,
+                                preload: true
+                              }}
+                            </div>
+                          {%- else -%}
+                            <span class="h2">{{ shop.name }}</span>
+                          {%- endif -%}
+                        </a>
+                      {%- endif -%}
                       {%- if block.settings.show_social and has_social_icons -%}
                         {%- render 'social-icons', class: 'footer__list-social' -%}
                       {%- endif -%}
@@ -409,6 +432,12 @@
         {
           "type": "header",
           "content": "t:sections.footer.blocks.brand_information.settings.header__1.content"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_logo",
+          "default": true,
+          "label": "t:sections.footer.blocks.brand_information.settings.show_logo.label"
         },
         {
           "type": "checkbox",

@@ -36,7 +36,6 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/jaclyn-moy-ugZxwLQuZec-unsplash.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/a-model-in-khakis-holding-orchids.jpg",
         "image_overlay_opacity": 80,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
@@ -47,7 +46,7 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false,
-        "add_class": "overlay"
+        "add_class": ""
       }
     },
     "93a03c84-8c81-4ce1-aa82-fc051114deb6": {
